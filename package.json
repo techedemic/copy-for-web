@@ -1,0 +1,54 @@
+{
+  "name": "copy-for-web",
+  "displayName": "copy-for-web",
+  "description": "Allows you to copy a file's contents, including file name, to your clipboard so you can easily use it with web searches, AI assistants, etc.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "category": "File",
+        "command": "copyFileForWeb.copy",
+        "title": "Copy for Web" 
+      }
+    ],
+    "menus": {     
+      "editor/title/context":[
+        {
+          "command": "copyFileForWeb.copy",         
+          "when": "isFileSystemResource"          
+        }
+      ]
+    },
+    "activationEvents": [
+      "onCommand:copyFileForWeb.copy"
+    ],
+    "main": "./out/extension" 
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.86.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}
